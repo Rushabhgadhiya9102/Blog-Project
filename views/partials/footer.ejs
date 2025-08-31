@@ -1,0 +1,46 @@
+
+<footer class="bg-dark mt-5">
+  <div class="container section w-100">
+
+    <div class="row">
+      <% if(page === "Register"){ %>
+
+       <div class="mx-auto text-center">
+         <h2 class="text-white">Already have an account</h2>
+         <a href="/" class="btn btn-primary mx-auto rounded">Login</a>
+       </div> 
+
+      <% } else if(page === "Login") { %>
+
+        <div class="mx-auto text-center">
+          <h2 class="text-white">Don't have an account</h2>
+          <a href="/register" class="btn btn-primary rounded">Register</a>
+        </div>
+
+        <% }else{ %>
+      <div class="col-lg-10 mx-auto text-center">
+        <a class="d-inline-block mb-4 pb-2" href="index.html">
+          <img loading="prelaod" decoding="async" class="img-fluid" src="/images/logo-white.png" alt="Reporter Hugo">
+        </a>
+        <ul class="p-0 d-flex navbar-footer mb-0 list-unstyled">
+          <li class="nav-item my-0"> <a class="nav-link" href="/index">Home</a></li>
+          <li class="nav-item my-0"> <a class="nav-link" href="/about">About</a></li>
+          <li class="nav-item my-0"> <a class="nav-link" href="/myArticles">My articles</a></li>
+        </ul>
+      </div>
+      <% } %>
+    </div>
+  </div>
+  <div class="copyright bg-dark content">Designed &amp; Developed By <a href="#">Rushabh Gadhiya</a></div>
+</footer>
+
+
+<!-- # JS Plugins -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
+<!-- Main Script -->
+<script src="js/script.js"></script>
+
+</body>
+</html>

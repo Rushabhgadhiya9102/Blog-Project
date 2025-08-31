@@ -1,0 +1,152 @@
+<%- include('partials/header.ejs') %>
+
+<main>
+  <section class="section">
+    <div class="container">
+      <div class="row no-gutters-lg">
+        <div class="col-12">
+          <h2 class="section-title">Latest Articles</h2>
+        </div>
+        <div class="col-lg-12 mb-5 mb-lg-0">
+          <div class="row">
+            <div class="col-12 mb-4">
+               <% blogs.slice(0,1).forEach(blog => { %>
+                <div class="mb-4">
+                  <article
+                    class="blog-card rounded shadow-md article-card article-card-sm h-100"
+                  >
+                      <div class="card-image">
+                        <div class="post-info">
+                          <span class="text-uppercase">
+                            <%= new Date(blog.createdAt).toLocaleDateString('en-GB', { day:
+                            '2-digit', month: 'short', year: 'numeric' }) %>
+                          </span>
+                          <span class="text-uppercase">
+                            <% 
+                            const now = new Date(); 
+                            const created = new
+                            Date(blog.createdAt); 
+                            const diffMs = now - created; 
+                            const diffMinutes = Math.floor(diffMs / 1000 / 60); 
+                            const diffHours = Math.floor(diffMinutes / 60); 
+                            const diffDays = Math.floor(diffHours / 24); 
+                            let timeAgo = ''; 
+                            if(diffMinutes < 1) { 
+                                    timeAgo = 'Just now'; 
+                            } else if(diffMinutes < 60) { 
+                                    timeAgo = diffMinutes + ' minutes ago'; 
+                            } else if(diffHours < 24) {
+                                    timeAgo = diffHours + ' hours ago'; } 
+                            else { 
+                                timeAgo = diffDays + ' days ago';
+                            } 
+                          
+                            %>
+                             <%= timeAgo %>
+                          </span>
+                        </div>
+                        <% if(blog.blogImage) { %>
+                        <img
+                          src="<%= blog.blogImage %>"
+                          class="img-fluid w-100 rounded"
+                          alt="Blog Image"
+                          style="height: 500px; object-fit: fill; object-position: center"
+                        />
+                        <% } %>
+                      </div>
+                    <div class="card-body px-0 pb-0">
+                      <ul class="post-meta mb-2">
+                        <li class="blog-category"><a href="#!"><%= blog.category %></a> </li>
+                      </ul>
+                      <h2
+                        ><a class="post-title" href="/blogsDetails/<%= blog._id %>"
+                          ><%= blog.blogName %></a
+                        ></h2
+                      >
+                      <p class="card-text"> <%= blog.blogContent.length > 200 ? blog.blogContent.substring(0, 200) + "..." : blog.blogContent %></p>
+                      <div class="content">
+                        <a class="read-more-btn px-1" href="/blogsDetails/<%= blog._id %>">Read Full Article</a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <% }) %>
+            </div>
+
+          <% if (blogs.length === 0) {%>
+              <div class="vh-100 d-flex w-100 justify-content-center align-items-center">
+                <h2>No Blogs Post</h2>
+              </div>
+              <% }else{ %>
+              <div class="row g-3">
+                <% blogs.forEach(blog => { %>
+                <div class="col-md-6 mb-4">
+                  <article
+                    class="blog-card rounded shadow-md article-card article-card-sm h-100"
+                  >
+                      <div class="card-image">
+                        <div class="post-info">
+                          <span class="text-uppercase">
+                            <%= new Date(blog.createdAt).toLocaleDateString('en-GB', { day:
+                            '2-digit', month: 'short', year: 'numeric' }) %>
+                          </span>
+                          <span class="text-uppercase">
+                            <% 
+                            const now = new Date(); 
+                            const created = new
+                            Date(blog.createdAt); 
+                            const diffMs = now - created; 
+                            const diffMinutes = Math.floor(diffMs / 1000 / 60); 
+                            const diffHours = Math.floor(diffMinutes / 60); 
+                            const diffDays = Math.floor(diffHours / 24); 
+                            let timeAgo = ''; 
+                            if(diffMinutes < 1) { 
+                                    timeAgo = 'Just now'; 
+                            } else if(diffMinutes < 60) { 
+                                    timeAgo = diffMinutes + ' minutes ago'; 
+                            } else if(diffHours < 24) {
+                                    timeAgo = diffHours + ' hours ago'; } 
+                            else { 
+                                timeAgo = diffDays + ' days ago';
+                            } 
+                          
+                            %>
+                             <%= timeAgo %>
+                          </span>
+                        </div>
+                        <% if(blog.blogImage) { %>
+                        <img
+                          src="<%= blog.blogImage %>"
+                          class="img-fluid w-100 rounded"
+                          alt="Blog Image"
+                          style="height: 300px; object-fit: cover; object-position: center"
+                        />
+                        <% } %>
+                      </div>
+                    <div class="card-body px-0 pb-0">
+                      <ul class="post-meta mb-2">
+                        <li class="blog-category"> <a href="#!"><%= blog.category %></a> </li>
+                      </ul>
+                      <h2
+                        ><a class="post-title" href="/blogsDetails/<%= blog._id %>"
+                          ><%= blog.blogName %></a
+                        ></h2
+                      >
+                      <p class="card-text"> <%= blog.blogContent.length > 100 ? blog.blogContent.substring(0, 100) + "..." : blog.blogContent %></p>
+                      <div class="content">
+                        <a class="read-more-btn px-1" href="/blogsDetails/<%= blog._id %>">Read Full Article</a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <% }) %>
+              </div>
+              <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%- include('partials/footer.ejs') %>

@@ -1,0 +1,73 @@
+<%- include('../partials/header') %>
+
+<main class="container py-5 h-100">
+  <div class="d-flex justify-content-center align-items-center">
+    <form
+      action="<%= blog ? `/myArticles/${blog._id}/edit` : '/createblog' %>"
+      method="post"
+      enctype="multipart/form-data"
+      class="w-100 h-100"
+    >
+      <div class="mb-3">
+        <label for="titleName" class="form-label">Blog Title</label>
+        <input
+          type="text"
+          class="form-control rounded"
+          placeholder="Enter Blog Title"
+          name="blogName"
+          value="<%= blog ? blog.blogName : '' %>"
+        />
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select name="category" class="form-control rounded" id="category">
+              <option value="" disabled <%= !blog ? 'selected' : '' %>>
+                --- select category ---
+              </option>
+              <option value="Travel" <%= blog?.category === 'Travel' ? 'selected' : '' %>>Travel</option>
+              <option value="News & Current Affairs" <%= blog?.category === 'News & Current Affairs' ? 'selected' : '' %>>News & Current Affairs</option>
+              <option value="Technology" <%= blog?.category === 'Technology' ? 'selected' : '' %>>Technology</option>
+              <option value="LifeStyle" <%= blog?.category === 'LifeStyle' ? 'selected' : '' %>>LifeStyle</option>
+              <option value="Business & Finance" <%= blog?.category === 'Business & Finance' ? 'selected' : '' %>>Business & Finance</option>
+              <option value="Education" <%= blog?.category === 'Education' ? 'selected' : '' %>>Education</option>
+              <option value="Entertainment" <%= blog?.category === 'Entertainment' ? 'selected' : '' %>>Entertainment</option>
+              <option value="Personal Blog" <%= blog?.category === 'Personal Blog' ? 'selected' : '' %>>Personal Blog</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="mb-3">
+            <label for="blogImage">Uploads Image</label>
+            <div class="d-flex align-items-center">
+              <input type="file" name="blogImage" class="form-control rounded" />
+            <% if (blog?.blogImage) { %>
+              <img src="<%= blog.blogImage %>" alt="Current Image" class="img-thumbnail ml-2" style="max-height:100px;">
+            <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="blogContent" class="form-label">Blog Content</label>
+        <textarea
+          name="blogContent"
+          id="blogContent"
+          class="form-control rounded"
+          placeholder="Add Your Content"
+          style="height: 400px"
+        ><%= blog ? blog.blogContent : '' %></textarea>
+      </div>
+
+      <button class="btn btn-primary rounded">
+        <%= blog ? 'Update Blog' : 'Submit' %>
+      </button>
+    </form>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

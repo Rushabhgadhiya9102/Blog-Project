@@ -1,0 +1,46 @@
+<%- include('../partials/header') %>
+
+<main class="container py-5">
+  <h2>Edit Profile</h2>
+
+  <form action="/profile/edit" method="POST">
+    
+    <div class="mb-3">
+      <label for="userName" class="form-label">Username</label>
+      <input 
+        type="text" 
+        id="userName" 
+        name="userName" 
+        value="<%= user.userName %>" 
+        required 
+        class="form-control"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input 
+        type="email" 
+        id="email" 
+        name="email" 
+        value="<%= user.email %>" 
+        class="form-control"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="bio" class="form-label">Bio</label>
+      <textarea 
+        id="bio" 
+        name="bio" 
+        class="form-control" 
+        rows="4"
+      ><%= user.bio %></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a href="/about" class="btn btn-secondary">Cancel</a>
+  </form>
+</main>
+
+<%- include('../partials/footer') %>

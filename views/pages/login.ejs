@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+
+<main class="login my-5">
+
+  <h2 class="my-5 text-center text-emerald">Welcome Back</h2>
+
+  <div class="row justify-content-center align-items-center">
+    <form action="/login" method="post" class="col-lg-5">
+
+      <div class="mb-3">
+        <label for="userName" class="form-label">Email</label>
+        <input type="email" class="form-control" name="email" />
+      </div>
+
+      <div class="mb-3">
+        <label for="userName" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" />
+      </div>
+      
+      <button class="btn btn-primary rounded">Login</button>
+    </form>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>
