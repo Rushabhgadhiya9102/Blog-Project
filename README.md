@@ -166,6 +166,23 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 5.  Push to the branch (`git push origin feature/your-feature-name`).
 6.  Open a Pull Request.
 
+## ScreenShots
+
+### Home page
+![Home Page](./public/screenshots-images/home-page.png)
+
+### Profile Page
+![Profile Page](./public/screenshots-images/about-page.png)
+
+### My Article Page
+![My Article Page](./public/screenshots-images/myArticles-page.png)
+
+### Login Page
+![Login Page](./public/screenshots-images/login.png)
+
+### Register Page
+![Register Page](./public/screenshots-images/register.png)
+
 ## License
 
 This project is open-source and available under the [MIT License](LICENSE).
